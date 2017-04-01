@@ -29,10 +29,8 @@
     <context:annotation-config />
     <context:component-scan base-package="com.blazartech" />
     
-    <!-- define the transaction manager -->
-    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="quoteOfTheDataDataSource"/>
-    </bean>
+    <!-- define the transaction manager.  The DAL implementations each define their own version of
+         the data transaction manager so we merely need to note it.  Do we even need this? -->
     <tx:annotation-driven transaction-manager="txManager" />
     
     <!-- task executor -->
