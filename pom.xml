@@ -78,6 +78,10 @@
             <artifactId>slf4j-simple</artifactId>
             <version>LATEST</version> <!-- or use LATEST -->
         </dependency>
-
+        <dependency>
+            <groupId>com.blazartech</groupId>
+            <artifactId>TelegramClient</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

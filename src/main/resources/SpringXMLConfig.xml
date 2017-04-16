@@ -62,6 +62,9 @@
     <batch:step id="postQuoteOfTheDayFacebookStep">
         <batch:tasklet ref="postQuoteOfTheDayFacebookTasklet" />
     </batch:step>
+    <batch:step id="postQuoteOfTheDayTelegramStep">
+        <batch:tasklet ref="postQuoteOfTheDayTelegramTasklet" />
+    </batch:step>
     
     <batch:job id="dailyQuoteOfTheDayDistributionJob" restartable="true">
         
@@ -78,6 +81,11 @@
             <!-- post to facebook -->
             <batch:flow>
                 <batch:step id="dailyQuoteOfTheDayDistributionJob_distributionSplit_facebookStep" parent="postQuoteOfTheDayFacebookStep" />
+            </batch:flow>
+            
+            <!-- send to telegram -->
+            <batch:flow>
+                <batch:step id="dailyQuoteOfTheDayDistributionJob_distributionSplit_telegramStep" parent="postQuoteOfTheDayTelegramStep" />
             </batch:flow>
         </batch:split>
     </batch:job>

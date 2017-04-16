@@ -16,20 +16,19 @@ import org.springframework.stereotype.Component;
  *
  * @author scott
  */
-@Component("postQuoteOfTheDayFacebookTasklet")
+@Component("postQuoteOfTheDayTelegramTasklet")
 @Scope("step")
-public class PostFacebookTasklet extends DistributeQuoteOfTheDayBaseTasklet {
-    
-    private static final Logger logger = Logger.getLogger(PostFacebookTasklet.class);
+public class PostTelegramTasklet extends DistributeQuoteOfTheDayBaseTasklet {
+
+    private static final Logger logger = Logger.getLogger(PostTelegramTasklet.class);
     
     @Autowired
-    @Qualifier("facebookPoster")
-    private DistributeQuoteOfTheDayPAB facebookPoster;
+    @Qualifier("telegramPoster")
+    private DistributeQuoteOfTheDayPAB telegramPoster;
 
     @Override
     protected DistributeQuoteOfTheDayPAB getDistributor() {
-        return facebookPoster;
+        return telegramPoster;
     }
     
-
 }
