@@ -18,7 +18,8 @@ public class FormatQuoteOfTheDayTelegramImpl implements FormatQuoteOfTheDayPAB {
 
     @Override
     public String formatQuoteOfTheDay(AggregatedQuoteOfTheDay qotd) {
-        String messageText = "Quote of the Day (" + qotd.getQuoteOfTheDay().getRunDate() + ")\n\n" +  qotd.getQuote().getText() + "\n\n" + "Source: <em>" + qotd.getSourceCode().getText() + "</em>";
+        String quoteText = qotd.getQuote().getText().replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+        String messageText = "Quote of the Day (" + qotd.getQuoteOfTheDay().getRunDate() + ")\n\n" +  quoteText + "\n\n" + "Source: <em>" + qotd.getSourceCode().getText() + "</em>";
         return messageText;
     }
     
