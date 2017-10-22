@@ -1,0 +1,16 @@
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/distribute/impl/telegram/FormatQuoteOfTheDayTelegramImpl.java
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/task/DistributeQuoteOfTheDayBaseTasklet.java
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/params/DailyQuoteOfTheDayDistributionJobParametersBuilder.java
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/distribute/impl/email/DistributeEmailQuoteOfTheDayPABImpl.java
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/task/GetQuoteOfTheDayTasklet.java
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/config/RepositoryDataSoruceConfiguration.java
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/distribute/impl/telegram/DistributeTelegramQuoteOfTheDayPABImpl.java
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/distribute/DistributeQuoteOfTheDayPAB.java
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/distribute/impl/email/FormatQuoteOfTheDayEmailImpl.java
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/task/PostTelegramTasklet.java
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/distribute/impl/facebook/FormatQuoteOfTheDayFacebookImpl.java
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/distribute/impl/facebook/DistributeFacebookQuoteOfTheDayPABImpl.java
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/task/MailQuoteOfTheDayTasklet.java
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/distribute/FormatQuoteOfTheDayPAB.java
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/task/BaseTasklet.java
+/home/scott/NetBeansProjects/QuoteOfTheDayJob/src/main/java/com/blazartech/products/qotdp/job/task/PostFacebookTasklet.java
