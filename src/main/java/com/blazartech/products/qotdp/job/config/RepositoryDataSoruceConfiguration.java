@@ -17,9 +17,9 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author scott
  */
-@Configuration
+//@Configuration
 public class RepositoryDataSoruceConfiguration {
-    
+  /*  
     @Autowired
     private BlazarCryptoFile cryptoFile;
     
@@ -45,5 +45,5 @@ public class RepositoryDataSoruceConfiguration {
         ds.setInitialSize(3);
         ds.setMaxTotal(5);
         return ds;
-    }
+    }*/
 }
