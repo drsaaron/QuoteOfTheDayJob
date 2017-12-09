@@ -65,17 +65,15 @@
     </batch:job>
     
     <!-- job manager -->
+    <util:map id="batchJobMap" key-type="java.lang.String" value-type="org.springframework.batch.core.Job">
+        <entry key="dailyQuoteOfTheDayDistributionJob" value-ref="dailyQuoteOfTheDayDistributionJob" />
+    </util:map>
+    <util:map id="batchJobParameterBuilderMap" key-type="java.lang.String" value-type="com.nm.ffba.common.batch.IJobParametersBuilder">
+        <entry key="dailyQuoteOfTheDayDistributionJob" value-ref="DailyQuoteOfTheDayDistributionJobParametersBuilder" />
+    </util:map>
     <bean id="SpringJobManager" class="com.nm.ffba.common.batch.impl.spring.SpringBatchJobManager" scope="singleton">
-        <property name="jobs">
-            <map>
-                <entry key="dailyQuoteOfTheDayDistributionJob" value-ref="dailyQuoteOfTheDayDistributionJob" />
-            </map>
-        </property>
-        <property name="parameterBuilders">
-            <map>
-                <entry key="dailyQuoteOfTheDayDistributionJob" value-ref="DailyQuoteOfTheDayDistributionJobParametersBuilder" />
-            </map>
-        </property>
+        <property name="jobs" ref="batchJobMap" />
+        <property name="parameterBuilders" ref="batchJobParameterBuilderMap" />
     </bean>
 
     <alias name="SpringJobManager" alias="jobManager" />
