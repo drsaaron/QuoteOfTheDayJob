@@ -5,10 +5,8 @@
  */
 package com.blazartech.products.qotdp.job.params;
 
+import com.blazartech.batch.IJobParametersBuilder;
 import com.blazartech.products.services.date.DateServices;
-import com.nm.ffba.common.batch.IJobParametersBuilder;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
