@@ -1,9 +1,5 @@
 #! /bin/ksh
 
-#jarList=$(find ./target/dependency -name '*.jar' -print)
-#export CLASSPATH=$(echo $jarList | sed 's/ /:/g'):$CLASSPATH
+appEnv=test
 
-export CLASSPATH=$(echo ./target/*.jar ./target/dependency/*.jar | sed 's/ /:/g')
-echo $CLASSPATH
-
-java com.blazartech.batch.main.JobRunner SpringXMLConfig.xml dailyQuoteOfTheDayDistributionJob $(date +%Y-%m-%d)
+java -jar target/QuoteOfTheDayJob-1.0-SNAPSHOT.jar $(date +%Y-%m-%d) --spring.config.name=application,$appEnv
