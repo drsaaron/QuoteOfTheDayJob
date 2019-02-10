@@ -28,7 +28,7 @@ public class DailyQuoteOfTheDayDistributionJobParametersBuilder implements IJobP
 
     @Override
     public Map<String, Object> buildJobParameters(String[] arguments) {
-        String runDateString = arguments[2];
+        String runDateString = arguments[0];
         Date runDate = dateServices.parseDate(runDateString);
         logger.info("runDate = " + dateServices.formatDate(runDate));
         

@@ -6,7 +6,6 @@
 package com.blazartech.products.qotdp.job.task;
 
 import com.blazartech.products.qotdp.data.QuoteOfTheDay;
-import java.util.Date;
 import org.apache.log4j.Logger;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
