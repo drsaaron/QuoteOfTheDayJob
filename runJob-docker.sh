@@ -2,7 +2,6 @@
 
 cd /app
 
-export CLASSPATH=$(echo ./target/*.jar ./target/dependency/*.jar | sed 's/ /:/g')
-echo $CLASSPATH
+appEnv=prod
 
-java com.blazartech.batch.main.JobRunner SpringXMLConfig.xml dailyQuoteOfTheDayDistributionJob $(date +%Y-%m-%d)
+java -jar target/QuoteOfTheDayJob-1.0-SNAPSHOT.jar $(date +%Y-%m-%d) --spring.config.name=application,$appEnv
