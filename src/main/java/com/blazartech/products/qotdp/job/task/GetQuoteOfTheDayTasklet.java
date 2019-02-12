@@ -19,7 +19,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
- *
+ * a tasklet that will simply determine the quote of the day and save it
+ * to the database.  The object will also be saved to the execution context
+ * so that subsequent steps can use it without having to query.
+ * 
  * @author scott
  */
 @Component("createQuoteOfTheDayTasklet")
@@ -40,16 +43,19 @@ public class GetQuoteOfTheDayTasklet extends BaseTasklet implements Tasklet, Ste
         return RepeatStatus.FINISHED;
     }
 
-    private StepExecution stepExecution;
-
     @Override
     public void beforeStep(StepExecution stepExecution) {
-        logger.info("saving execution context");
-        this.stepExecution = stepExecution;
     }
     
+    /**
+     * add the quote of the day to the execution context so that subsequent
+     * steps can simply use it.
+     * 
+     * @param stepExecution
+     * @return 
+     */
     @Override
-    public ExitStatus afterStep(StepExecution e) {
+    public ExitStatus afterStep(StepExecution stepExecution) {
         logger.info("saving QOTD to the execution context");
         ExecutionContext stepContext = stepExecution.getExecutionContext();
         stepContext.put("quoteOfTheDay", qotd);
