@@ -26,7 +26,11 @@
     
     <!-- daily quote distribution job -->
     <batch:step id="getQuoteOfTheDayStep">
-        <batch:tasklet ref="createQuoteOfTheDayTasklet" />
+        <batch:tasklet ref="createQuoteOfTheDayTasklet">
+            <batch:listeners>
+                <batch:listener ref="quoteOfTheDayPromotionListener" />
+            </batch:listeners>
+        </batch:tasklet>
     </batch:step>
     <batch:step id="mailQuoteOfTheDayStep">
         <batch:tasklet ref="mailQuoteOfTheDayTasklet" />
@@ -38,7 +42,7 @@
         <batch:tasklet ref="postQuoteOfTheDayTelegramTasklet" />
     </batch:step>
     
-    <batch:job id="dailyQuoteOfTheDayDistributionJob" restartable="true">
+    <batch:job id="dailyQuoteOfTheDayDistributionJob" restartable="false">
         
         <!-- get the quote of the data in the database -->
         <batch:step id="dailyQuoteOfTheDayDistributionJob_getQuoteStep" parent="getQuoteOfTheDayStep" next="dailyQuoteOfTheDayDistributionJob_distributionSplit" />

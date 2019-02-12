@@ -13,6 +13,7 @@ import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  *
@@ -24,11 +25,13 @@ abstract public class DistributeQuoteOfTheDayBaseTasklet extends BaseTasklet imp
     
     abstract protected DistributeQuoteOfTheDayPAB getDistributor();
     
+    @Value("#{jobExecutionContext['quoteOfTheDay']}")
+    private QuoteOfTheDay qotd;
+    
     @Override
     public RepeatStatus execute(StepContribution sc, ChunkContext cc) throws Exception {
         logger.info("posting quote of the day");
         
-        QuoteOfTheDay qotd = getQuoteOfTheDay();
         logger.info("found quote " + qotd.getQuoteNumber() + " for " + qotd.getRunDate());
         
         AggregatedQuoteOfTheDay aggregatedQuote = getGetQuoteOfTheDayPAB().getAggregatedQuoteOfTheDay(getRunDate());
