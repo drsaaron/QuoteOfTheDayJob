@@ -42,7 +42,7 @@
         <batch:tasklet ref="postQuoteOfTheDayTelegramTasklet" />
     </batch:step>
     
-    <batch:job id="dailyQuoteOfTheDayDistributionJob" restartable="false">
+    <batch:job id="dailyQuoteOfTheDayDistributionJob" restartable="true">
         
         <!-- get the quote of the data in the database -->
         <batch:step id="dailyQuoteOfTheDayDistributionJob_getQuoteStep" parent="getQuoteOfTheDayStep" next="dailyQuoteOfTheDayDistributionJob_distributionSplit" />
