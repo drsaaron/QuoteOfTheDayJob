@@ -16,6 +16,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class QuoteOfTheDayPromotionListenerConfiguration {
     
+    /**
+     * provide a promotion listener that will promote the quote of the
+     * day from the step execution context to the job execution context.
+     * 
+     * @return 
+     */
     @Bean
     public ExecutionContextPromotionListener quoteOfTheDayPromotionListener() {
         ExecutionContextPromotionListener listener = new ExecutionContextPromotionListener();
