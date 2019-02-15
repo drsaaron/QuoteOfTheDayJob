@@ -10,6 +10,7 @@ import com.blazartech.products.mail.MessageMailer;
 import com.blazartech.products.qotdp.job.distribute.DistributeQuoteOfTheDayPAB;
 import com.blazartech.products.qotdp.job.distribute.FormatQuoteOfTheDayPAB;
 import com.blazartech.products.qotdp.process.AggregatedQuoteOfTheDay;
+import com.blazartech.products.services.date.DateServices;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -32,6 +33,9 @@ public class DistributeEmailQuoteOfTheDayPABImpl implements DistributeQuoteOfThe
     
     @Autowired
     private MessageMailer mailer;
+    
+    @Autowired
+    private DateServices ds;
     
     @Autowired
     @Qualifier("emailFormatter")
@@ -63,7 +67,7 @@ public class DistributeEmailQuoteOfTheDayPABImpl implements DistributeQuoteOfThe
         getRecipients().forEach((r) -> {
             message.addRecipient(r);
         });
-        message.setSubject("Quote of the Day (" + qotd.getQuoteOfTheDay().getRunDate() + ")");
+        message.setSubject("Quote of the Day (" + ds.formatDate(qotd.getQuoteOfTheDay().getRunDate()) + ")");
         message.setText(formattedQuote);
         try {
             mailer.sendMessage(message);

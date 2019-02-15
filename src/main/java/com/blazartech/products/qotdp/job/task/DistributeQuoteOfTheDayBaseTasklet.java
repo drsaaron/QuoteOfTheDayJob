@@ -34,7 +34,7 @@ abstract public class DistributeQuoteOfTheDayBaseTasklet extends BaseTasklet imp
         
         logger.info("found quote " + qotd.getQuoteNumber() + " for " + qotd.getRunDate());
         
-        AggregatedQuoteOfTheDay aggregatedQuote = getGetQuoteOfTheDayPAB().getAggregatedQuoteOfTheDay(getRunDate());
+        AggregatedQuoteOfTheDay aggregatedQuote = getGetQuoteOfTheDayPAB().getAggregatedQuoteOfTheDay(qotd);
         
         logger.info("distributing....");
         getDistributor().distributeQuoteOfTheDay(aggregatedQuote);

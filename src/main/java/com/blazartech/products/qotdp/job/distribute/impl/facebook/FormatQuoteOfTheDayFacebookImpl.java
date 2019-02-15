@@ -7,6 +7,8 @@ package com.blazartech.products.qotdp.job.distribute.impl.facebook;
 
 import com.blazartech.products.qotdp.job.distribute.FormatQuoteOfTheDayPAB;
 import com.blazartech.products.qotdp.process.AggregatedQuoteOfTheDay;
+import com.blazartech.products.services.date.DateServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,9 +18,12 @@ import org.springframework.stereotype.Component;
 @Component("facebookFormatter")
 public class FormatQuoteOfTheDayFacebookImpl implements FormatQuoteOfTheDayPAB {
 
+    @Autowired
+    private DateServices dateServices;
+    
     @Override
     public String formatQuoteOfTheDay(AggregatedQuoteOfTheDay qotd) {
-        String messageText = "Quote of the Day (" + qotd.getQuoteOfTheDay().getRunDate() + ")\n\n" +  qotd.getQuote().getText() + "\n\n" + "Source: " + qotd.getSourceCode().getText();
+        String messageText = "Quote of the Day (" + dateServices.formatDate(qotd.getQuoteOfTheDay().getRunDate()) + ")\n\n" +  qotd.getQuote().getText() + "\n\n" + "Source: " + qotd.getSourceCode().getText();
         return messageText;
     }
     
