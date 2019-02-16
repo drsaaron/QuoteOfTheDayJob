@@ -76,7 +76,7 @@ public class FormatQuoteOfTheDayEmailImplTest {
     public void testFormatQuoteOfTheDay() {
         logger.info("formatQuoteOfTheDay");
 
-        String expResult = "I am a test quote, hear me roar<br><br><font size=\"-1\">Source: <em>I am a source code</em></font>";
+        String expResult = "I am a test quote, hear me roar<br>But also use a second line<br><br><font size=\"-1\">Source: <em>I am a source code</em></font>";
         String result = formatter.formatQuoteOfTheDay(qotd);
         assertEquals(expResult, result);
     }

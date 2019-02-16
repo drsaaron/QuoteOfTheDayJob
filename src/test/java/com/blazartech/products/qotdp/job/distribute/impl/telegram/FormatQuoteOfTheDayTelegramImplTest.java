@@ -32,59 +32,61 @@ import org.springframework.test.context.junit4.SpringRunner;
     CommonFormatTestConfiguration.class
 })
 public class FormatQuoteOfTheDayTelegramImplTest {
-    
+
     private static final Logger logger = LoggerFactory.getLogger(FormatQuoteOfTheDayTelegramImplTest.class);
-    
+
     @Configuration
     static class FormatQuoteOfTheDayTelegramImplTestConfiguration {
-        
+
         @Bean
         public FormatQuoteOfTheDayTelegramImpl getFormatQuoteOfTheDayTelegramImpl() {
             return new FormatQuoteOfTheDayTelegramImpl();
         }
-        
+
     }
-    
+
     @Autowired
     private FormatQuoteOfTheDayTelegramImpl formatter;
-    
+
     @Autowired
     private AggregatedQuoteOfTheDay qotd;
-    
+
     public FormatQuoteOfTheDayTelegramImplTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of formatQuoteOfTheDay method, of class FormatQuoteOfTheDayTelegramImpl.
+     * Test of formatQuoteOfTheDay method, of class
+     * FormatQuoteOfTheDayTelegramImpl.
      */
     @Test
     public void testFormatQuoteOfTheDay() {
         logger.info("formatQuoteOfTheDay");
 
-        String expResult = "Quote of the Day (2019-02-02)\n" +
-"\n" +
-"I am a test quote, hear me roar\n" +
-"\n" +
-"Source: <em>I am a source code</em>";
+        String expResult = "Quote of the Day (2019-02-02)\n"
+                + "\n"
+                + "I am a test quote, hear me roar\n"
+                + "But also use a second line\n"
+                + "\n"
+                + "Source: <em>I am a source code</em>";
         String result = formatter.formatQuoteOfTheDay(qotd);
         assertEquals(expResult, result);
 
     }
-    
+
 }
