@@ -54,6 +54,10 @@ public class DistributeEmailQuoteOfTheDayPABImpl implements DistributeQuoteOfThe
     public String getName() {
         return "email distributor";
     }
+    
+    public String getSubject(AggregatedQuoteOfTheDay qotd) {
+        return "Quote of the Day (" + ds.formatDate(qotd.getQuoteOfTheDay().getRunDate()) + ")";
+    }
 
     @Override
     public void distributeQuoteOfTheDay(AggregatedQuoteOfTheDay qotd) {
@@ -67,7 +71,7 @@ public class DistributeEmailQuoteOfTheDayPABImpl implements DistributeQuoteOfThe
         getRecipients().forEach((r) -> {
             message.addRecipient(r);
         });
-        message.setSubject("Quote of the Day (" + ds.formatDate(qotd.getQuoteOfTheDay().getRunDate()) + ")");
+        message.setSubject(getSubject(qotd));
         message.setText(formattedQuote);
         try {
             mailer.sendMessage(message);
