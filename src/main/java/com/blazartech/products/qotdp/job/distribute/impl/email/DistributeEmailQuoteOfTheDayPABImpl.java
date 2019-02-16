@@ -43,10 +43,10 @@ public class DistributeEmailQuoteOfTheDayPABImpl implements DistributeQuoteOfThe
     
     @Value("${com.blazartech.products.qotdp.job.distribute.email.recipients}")
     private String recipientList;
-
-    private Collection<String> getRecipients() {
+    
+    public Collection<String> getRecipients() {
         List<String> recipients = new ArrayList<>();
-        recipients.addAll(Arrays.asList(recipientList.split(",")));
+        recipients.addAll(Arrays.asList(recipientList.split(", *")));
         return recipients;
     }
     

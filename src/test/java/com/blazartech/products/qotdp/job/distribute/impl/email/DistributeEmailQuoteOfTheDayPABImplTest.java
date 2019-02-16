@@ -23,6 +23,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.blazartech.products.mail.MessageMailer;
+import java.util.Collection;
 import javax.mail.MessagingException;
 
 /**
@@ -114,4 +115,19 @@ public class DistributeEmailQuoteOfTheDayPABImplTest {
         String result = distributor.getSubject(qotd);
         assertEquals(expResult, result);
     }    
+    
+    @Test
+    public void testGetRecipients() {
+        logger.info("getRecipients");
+        
+        String[] expectedSenders = { "me@email.com", "you@email.com", "other@email.com" };
+
+        Collection<String> recipients = distributor.getRecipients();
+        assertEquals(expectedSenders.length, recipients.size());
+        
+        int i = 0;
+        for (String recipient : recipients) {
+            assertEquals(expectedSenders[i++], recipient);
+        }
+    }
 }
