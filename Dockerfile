@@ -10,5 +10,8 @@ ADD ./target ./target
 # add a shell script to run the java program
 ADD ./runJob-docker.sh ./runJob-docker.sh
 
+# add CA certs
+ADD ./tmp ./tmp
+
 # run the script
 CMD ./runJob-docker.sh
