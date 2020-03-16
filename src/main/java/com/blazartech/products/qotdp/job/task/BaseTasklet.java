@@ -8,7 +8,8 @@ package com.blazartech.products.qotdp.job.task;
 import com.blazartech.products.qotdp.data.QuoteOfTheDay;
 import com.blazartech.products.qotdp.process.GetQuoteOfTheDayPAB;
 import java.util.Date;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -18,7 +19,7 @@ import org.springframework.beans.factory.annotation.Value;
  */
 public abstract class BaseTasklet {
     
-    private static final Logger logger = Logger.getLogger(BaseTasklet.class);
+    private static final Logger logger = LoggerFactory.getLogger(BaseTasklet.class);
     
     @Autowired
     private GetQuoteOfTheDayPAB getQuoteOfTheDayPAB;
