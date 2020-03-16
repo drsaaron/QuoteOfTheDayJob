@@ -43,16 +43,20 @@ public class DistributeEmailQuoteOfTheDayPABImpl implements DistributeQuoteOfThe
     
     @Value("${com.blazartech.products.qotdp.job.distribute.email.recipients}")
     private String recipientList;
-
-    private Collection<String> getRecipients() {
+    
+    public Collection<String> getRecipients() {
         List<String> recipients = new ArrayList<>();
-        recipients.addAll(Arrays.asList(recipientList.split(",")));
+        recipients.addAll(Arrays.asList(recipientList.split(", *")));
         return recipients;
     }
     
     @Override
     public String getName() {
         return "email distributor";
+    }
+    
+    public String getSubject(AggregatedQuoteOfTheDay qotd) {
+        return "Quote of the Day (" + ds.formatDate(qotd.getQuoteOfTheDay().getRunDate()) + ")";
     }
 
     @Override
@@ -67,7 +71,7 @@ public class DistributeEmailQuoteOfTheDayPABImpl implements DistributeQuoteOfThe
         getRecipients().forEach((r) -> {
             message.addRecipient(r);
         });
-        message.setSubject("Quote of the Day (" + ds.formatDate(qotd.getQuoteOfTheDay().getRunDate()) + ")");
+        message.setSubject(getSubject(qotd));
         message.setText(formattedQuote);
         try {
             mailer.sendMessage(message);
