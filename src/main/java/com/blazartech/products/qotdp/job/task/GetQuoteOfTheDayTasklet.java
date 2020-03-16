@@ -6,7 +6,8 @@
 package com.blazartech.products.qotdp.job.task;
 
 import com.blazartech.products.qotdp.data.QuoteOfTheDay;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.StepExecution;
@@ -29,7 +30,7 @@ import org.springframework.stereotype.Component;
 @Scope("step")
 public class GetQuoteOfTheDayTasklet extends BaseTasklet implements Tasklet, StepExecutionListener {
 
-    private static final Logger logger = Logger.getLogger(GetQuoteOfTheDayTasklet.class);
+    private static final Logger logger = LoggerFactory.getLogger(GetQuoteOfTheDayTasklet.class);
     
     private QuoteOfTheDay qotd;
 

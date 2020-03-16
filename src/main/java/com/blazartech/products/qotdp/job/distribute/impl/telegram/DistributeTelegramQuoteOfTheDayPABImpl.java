@@ -10,7 +10,8 @@ import com.blazartech.products.qotdp.job.distribute.FormatQuoteOfTheDayPAB;
 import com.blazartech.products.qotdp.process.AggregatedQuoteOfTheDay;
 import com.blazartech.products.telegram.client.BTTelegramClient;
 import com.blazartech.products.telegram.client.Message;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +24,7 @@ import org.springframework.stereotype.Component;
 @Component("telegramPoster")
 public class DistributeTelegramQuoteOfTheDayPABImpl implements DistributeQuoteOfTheDayPAB {
     
-    private static final Logger logger = Logger.getLogger(DistributeTelegramQuoteOfTheDayPABImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(DistributeTelegramQuoteOfTheDayPABImpl.class);
     
     @Autowired
     private BTTelegramClient client;

@@ -10,7 +10,8 @@ import com.blazartech.products.fbclient.Status;
 import com.blazartech.products.qotdp.job.distribute.DistributeQuoteOfTheDayPAB;
 import com.blazartech.products.qotdp.job.distribute.FormatQuoteOfTheDayPAB;
 import com.blazartech.products.qotdp.process.AggregatedQuoteOfTheDay;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -22,7 +23,7 @@ import org.springframework.stereotype.Component;
 @Component("facebookPoster")
 public class DistributeFacebookQuoteOfTheDayPABImpl implements DistributeQuoteOfTheDayPAB {
 
-    private static final Logger logger = Logger.getLogger(DistributeFacebookQuoteOfTheDayPABImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(DistributeFacebookQuoteOfTheDayPABImpl.class);
     
     @Autowired
     private BTFacebookClient facebookClient;

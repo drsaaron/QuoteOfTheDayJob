@@ -6,7 +6,8 @@
 package com.blazartech.products.qotdp.job.task;
 
 import com.blazartech.products.qotdp.job.distribute.DistributeQuoteOfTheDayPAB;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Scope("step")
 public class PostTelegramTasklet extends DistributeQuoteOfTheDayBaseTasklet {
 
-    private static final Logger logger = Logger.getLogger(PostTelegramTasklet.class);
+    private static final Logger logger = LoggerFactory.getLogger(PostTelegramTasklet.class);
     
     @Autowired
     @Qualifier("telegramPoster")

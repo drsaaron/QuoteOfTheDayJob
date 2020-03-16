@@ -10,7 +10,8 @@ import com.blazartech.products.services.date.DateServices;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +22,7 @@ import org.springframework.stereotype.Component;
 @Component("DailyQuoteOfTheDayDistributionJobParametersBuilder")
 public class DailyQuoteOfTheDayDistributionJobParametersBuilder implements IJobParametersBuilder {
 
-    private static final Logger logger = Logger.getLogger(DailyQuoteOfTheDayDistributionJobParametersBuilder.class);
+    private static final Logger logger = LoggerFactory.getLogger(DailyQuoteOfTheDayDistributionJobParametersBuilder.class);
 
     @Autowired
     private DateServices dateServices;
