@@ -1,6 +1,6 @@
-#! /bin/ksh
+#! /bin/sh
 
-appEnv=test
+appEnv=${ENVIRONMENT:-test}
 
 # certificates
 certDir=tmp/certs

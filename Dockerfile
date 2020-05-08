@@ -1,5 +1,16 @@
-# Start from the java docker.
-FROM openjdk:11
+# Start from alpine image
+FROM alpine
+
+# setup timezone
+RUN apk add tzdata
+ENV TZ=US/Central
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# install java
+RUN apk add openjdk11-jdk
+
+# this is the prod environment
+ENV ENVIRONMENT prod
 
 # set a working directory
 WORKDIR /app
@@ -8,10 +19,10 @@ WORKDIR /app
 ADD ./target ./target
 
 # add a shell script to run the java program
-ADD ./runJob-docker.sh ./runJob-docker.sh
+ADD ./runJob.sh ./runJob.sh
 
 # add CA certs
 ADD ./tmp ./tmp
 
 # run the script
-CMD ./runJob-docker.sh
+CMD ./runJob.sh
