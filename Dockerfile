@@ -1,5 +1,5 @@
 # Start from the java docker.
-FROM openjdk:latest
+FROM openjdk:11
 
 # set a working directory
 WORKDIR /app

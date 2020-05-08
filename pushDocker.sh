@@ -1,4 +1,5 @@
 #! /bin/ksh
 
-docker tag drsaaron/qotdjob drsaaron/qotdjob:latest
-docker push drsaaron/qotdjob:latest
+version=$(grep '^ *<version>' pom.xml | head -1 | perl -pe 's%</?version>%%g; s/-SNAPSHOT//; s/^ *//; s/\W*$//g')
+
+docker push drsaaron/qotdjob:$version
