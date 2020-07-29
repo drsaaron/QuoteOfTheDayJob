@@ -42,7 +42,11 @@
         <batch:tasklet ref="postQuoteOfTheDayTelegramTasklet" />
     </batch:step>
     
-    <batch:job id="dailyQuoteOfTheDayDistributionJob" restartable="true">
+    <!-- job itself.  It is marked non-restartable because I cannot get it work
+         so far with the QOTD in the job context during a restart after failure.
+         It seems unable to successfully convert the object from the job repository
+         into a class. -->
+    <batch:job id="dailyQuoteOfTheDayDistributionJob" restartable="false">
         
         <!-- get the quote of the data in the database -->
         <batch:step id="dailyQuoteOfTheDayDistributionJob_getQuoteStep" parent="getQuoteOfTheDayStep" next="dailyQuoteOfTheDayDistributionJob_distributionSplit" />
