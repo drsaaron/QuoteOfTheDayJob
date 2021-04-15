@@ -1,4 +1,4 @@
-#! /bin/ksh
+#! /bin/sh
 
 export PATH=/bin:/usr/bin:/sbin:$PATH
 
