@@ -2,15 +2,24 @@
 
 export PATH=/bin:/usr/bin:/sbin:$PATH
 
-# start the database
-echo "starting database"
-dbps=$(docker ps | grep mysql1)
-if [ "$dbps" = "" ]
+shutdownDatabase() {
+    if [ -n "$dbstarted"  ]
+    then
+	echo "stopping DB"
+	cd ~/local-mysql-docker
+	./stopContainer.sh
+    fi
+}
+
+trap "shutdownDatabase; exit 1" INT
+
+# start the database if it's not already running
+if ! docker ps | grep mysql1
 then
     echo "starting DB..."
     docker start mysql1
-    sleep 10
     dbstarted=true
+    sleep 10
 fi
 
 # get the IP address of the host
@@ -21,11 +30,5 @@ ip=$(ifconfig wlo1 | grep inet | awk '$1=="inet" {print $2}')
 echo "running job"
 docker run --add-host quoteDBServer:$ip --add-host batchDBServer:$ip -v ~/.blazartech:/root/.blazartech drsaaron/qotdjob 2>&1 | tee /tmp/qotd-$(date +%Y-%m-%d).log
 
-# stop the database
 # shutdown DB, if we started it.
-if [ "$dbstarted" = "true" ]
-then
-    echo "stopping DB"
-    cd ~/local-mysql-docker
-    ./stopContainer.sh
-fi
+shutdownDatabase
