@@ -1,6 +1,6 @@
 #! /bin/sh
 
-export PATH=/bin:/usr/bin:/sbin:$PATH
+export PATH=/bin:/usr/bin:/sbin:~/shell:$PATH
 
 shutdownDatabase() {
     if [ -n "$dbstarted"  ]
@@ -28,7 +28,8 @@ ip=$(ifconfig wlo1 | grep inet | awk '$1=="inet" {print $2}')
 
 # run the job
 echo "running job"
-docker run --add-host quoteDBServer:$ip --add-host batchDBServer:$ip -v ~/.blazartech:/root/.blazartech drsaaron/qotdjob 2>&1 | tee /tmp/qotd-$(date +%Y-%m-%d).log
+imageName=$(getPomAttribute.sh artifactId | tr '[:upper:]' '[:lower:]')
+docker run --add-host quoteDBServer:$ip --add-host batchDBServer:$ip -v ~/.blazartech:/root/.blazartech drsaaron/$imageName 2>&1 | tee /tmp/qotd-$(date +%Y-%m-%d).log
 
 # shutdown DB, if we started it.
 shutdownDatabase
