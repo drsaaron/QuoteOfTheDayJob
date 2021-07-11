@@ -1,6 +1,7 @@
-#! /bin/sh
+#! /bin/sh 
 
-export PATH=/bin:/usr/bin:/sbin:~/shell:$PATH
+export PATH=/bin:/usr/bin:/sbin:$HOME/shell:$PATH
+cd $(dirname $0)
 
 shutdownDatabase() {
     if [ -n "$dbstarted"  ]
