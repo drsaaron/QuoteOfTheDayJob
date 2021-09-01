@@ -3,6 +3,8 @@
 export PATH=/bin:/usr/bin:/sbin:$HOME/shell:$PATH
 cd $(dirname $0)
 
+running=1
+
 shutdownDatabase() {
     if [ -n "$dbstarted"  ]
     then
@@ -12,7 +14,13 @@ shutdownDatabase() {
     fi
 }
 
-trap "shutdownDatabase; exit 1" INT
+exitHandler() {
+    shutdownDatabase
+    exit $running
+}
+
+# shutdown the database server on an interrupt or completion.
+trap "exitHandler" INT EXIT
 
 # start the database if it's not already running
 if ! docker ps | grep mysql1
@@ -32,5 +40,5 @@ echo "running job"
 imageName=$(dockerImageName.sh)
 docker run --add-host quoteDBServer:$ip --add-host batchDBServer:$ip -v ~/.blazartech:/root/.blazartech drsaaron/$imageName 2>&1 | tee /tmp/qotd-$(date +%Y-%m-%d).log
 
-# shutdown DB, if we started it.
-shutdownDatabase
+# done running
+running=0
