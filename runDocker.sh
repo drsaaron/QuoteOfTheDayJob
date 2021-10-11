@@ -38,7 +38,7 @@ ip=$(ifconfig wlo1 | grep inet | awk '$1=="inet" {print $2}')
 # run the job
 echo "running job"
 imageName=$(dockerImageName.sh)
-docker run --add-host quoteDBServer:$ip --add-host batchDBServer:$ip -v ~/.blazartech:/root/.blazartech drsaaron/$imageName 2>&1 | tee /tmp/qotd-$(date +%Y-%m-%d).log
+docker run --add-host quoteDBServer:$ip --add-host batchDBServer:$ip -v ~/.blazartech:/root/.blazartech $imageName 2>&1 | tee /tmp/qotd-$(date +%Y-%m-%d).log
 
 # done running
 running=0
