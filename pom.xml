@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.blazartech</groupId>
     <artifactId>QuoteOfTheDayJob</artifactId>
-    <version>1.23-RELEASE</version>
+    <version>1.24-RELEASE</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,32 +25,32 @@
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>JobManager-mvn</artifactId>
-            <version>1.13-RELEASE</version>
+            <version>1.14-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>FacebookClient-mvn</artifactId>
-            <version>1.14-RELEASE</version>
+            <version>1.15-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>QuoteOfTheDay-process</artifactId>
-            <version>1.14-RELEASE</version>
+            <version>1.15-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>QuoteOfTheDay-data-jpaImpl</artifactId>
-            <version>1.15-RELEASE</version>
+            <version>1.16-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>QuoteOfTheDay-data</artifactId>
-            <version>1.15-RELEASE</version>
+            <version>1.16-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>BlazarCryptoFile-mvn</artifactId>
-            <version>1.13-RELEASE</version>
+            <version>1.14-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -63,12 +63,12 @@
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>BlazarMailer-springImpl</artifactId>
-            <version>1.12-RELEASE</version>
+            <version>1.13-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>TelegramClient</artifactId>
-            <version>1.13-RELEASE</version>
+            <version>1.14-RELEASE</version>
         </dependency>
 
         <!-- unit testing -->
