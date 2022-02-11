@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.blazartech</groupId>
     <artifactId>QuoteOfTheDayJob</artifactId>
-    <version>1.31-RELEASE</version>
+    <version>1.32-RELEASE</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,7 +30,7 @@
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>FacebookClient-mvn</artifactId>
-            <version>1.21-RELEASE</version>
+            <version>1.22-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.blazartech</groupId>
@@ -40,7 +40,7 @@
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>QuoteOfTheDay-data-jpaImpl</artifactId>
-            <version>1.23-RELEASE</version>
+            <version>1.24-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.blazartech</groupId>
@@ -68,7 +68,7 @@
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>TelegramClient</artifactId>
-            <version>1.20-RELEASE</version>
+            <version>1.21-RELEASE</version>
         </dependency>
 
         <!-- unit testing -->
