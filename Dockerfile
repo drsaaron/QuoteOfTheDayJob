@@ -1,4 +1,4 @@
-FROM drsaaron/blazarjavabase:1.1
+FROM drsaaron/blazarjavabase:1.6
 
 # add the target directory, which has the jars
 ADD ./target ./target
