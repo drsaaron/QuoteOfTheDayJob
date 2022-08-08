@@ -23,7 +23,7 @@ exitHandler() {
 trap "exitHandler" INT EXIT
 
 # start the database if it's not already running
-if ! docker ps | grep mysql1
+if ! docker ps | grep -q mysql1
 then
     echo "starting DB..."
     docker start mysql1
@@ -38,7 +38,7 @@ ip=$(ifconfig wlo1 | grep inet | awk '$1=="inet" {print $2}')
 # run the job
 echo "running job"
 imageName=$(dockerImageName.sh)
-docker run --add-host quoteDBServer:$ip --add-host batchDBServer:$ip -v ~/.blazartech:/root/.blazartech $imageName 2>&1 | tee /tmp/qotd-$(date +%Y-%m-%d).log
+docker run --user $(id -u):$(id -g) --add-host quoteDBServer:$ip --add-host batchDBServer:$ip -v ~/.blazartech:/home/$(whoami)/.blazartech $imageName 2>&1 | tee /tmp/qotd-$(date +%Y-%m-%d).log
 
 # done running
 running=0
