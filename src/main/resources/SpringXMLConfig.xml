@@ -71,12 +71,12 @@
     </batch:job>
     
     <!-- job manager -->
-    <util:map id="batchJobMap" key-type="java.lang.String" value-type="org.springframework.batch.core.Job">
+   <!-- <util:map id="batchJobMap" key-type="java.lang.String" value-type="org.springframework.batch.core.Job">
         <entry key="dailyQuoteOfTheDayDistributionJob" value-ref="dailyQuoteOfTheDayDistributionJob" />
     </util:map>
     <util:map id="batchJobParameterBuilderMap" key-type="java.lang.String" value-type="com.blazartech.batch.IJobParametersBuilder">
         <entry key="dailyQuoteOfTheDayDistributionJob" value-ref="DailyQuoteOfTheDayDistributionJobParametersBuilder" />
-    </util:map>
+    </util:map> -->
     <alias name="SpringBatchJobManager" alias="jobManager" />
     
     
