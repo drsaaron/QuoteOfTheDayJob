@@ -40,7 +40,7 @@
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>QuoteOfTheDay-data-jpaImpl</artifactId>
-            <version>1.41-RELEASE</version>
+            <version>1.42-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.blazartech</groupId>

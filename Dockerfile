@@ -1,7 +1,13 @@
 FROM drsaaron/blazarjavabase:1.14
 
-# add the target directory, which has the jars
-ADD ./target ./target
+# add the source directory and mvn stuff
+ADD ./pom.xml ./pom.xml
+ADD ./src ./src
+ADD ./mvnw ./mvnw
+ADD ./.mvn ./.mvn
+
+# build
+RUN mvnw clean install
 
 # add a shell script to run the java program
 ADD ./runJob.sh ./runJob.sh
