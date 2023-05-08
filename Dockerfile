@@ -1,4 +1,4 @@
-FROM drsaaron/blazarjavabase:1.18
+FROM drsaaron/blazarjavabase:1.19
 
 # add the source directory and mvn stuff
 ADD ./pom.xml ./pom.xml
