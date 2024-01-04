@@ -13,6 +13,7 @@ import com.blazartech.products.services.date.DateServices;
 import com.blazartech.products.services.date.impl.DateServicesImpl;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -66,7 +67,7 @@ public class CommonFormatTestConfiguration {
         QuoteOfTheDay qotd = new QuoteOfTheDay();
         qotd.setNumber(-1);
         qotd.setQuoteNumber(quoteNum);
-        qotd.setRunDate(getDateServices().parseDate(runDate));
+        qotd.setRunDate(getDateServices().parseLocalDate(runDate));
         
         QuoteSourceCode sc = new QuoteSourceCode();
         sc.setNumber(sourceCode);

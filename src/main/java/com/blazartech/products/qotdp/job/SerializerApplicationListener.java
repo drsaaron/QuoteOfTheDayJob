@@ -6,10 +6,8 @@
 package com.blazartech.products.qotdp.job;
 
 import com.blazartech.products.qotdp.data.QuoteOfTheDay;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.Date;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.batch.core.repository.dao.Jackson2ExecutionContextStringSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -30,6 +28,7 @@ public class SerializerApplicationListener {
     public void onApplicationEvent(ContextRefreshedEvent event) {
         // allow the quote of the day object to be serialized ot the context
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
         mapper.addMixIn(QuoteOfTheDay.class, Object.class);
         serializer.setObjectMapper(mapper);
     }
