@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -24,6 +25,9 @@ import org.springframework.stereotype.Component;
 public class DistributeFacebookQuoteOfTheDayPABImpl implements DistributeQuoteOfTheDayPAB {
 
     private static final Logger logger = LoggerFactory.getLogger(DistributeFacebookQuoteOfTheDayPABImpl.class);
+    
+    @Value("${qotd.job.doDistribute}")
+    private boolean doDistribute;
     
     @Autowired
     private BTFacebookClient facebookClient;
@@ -44,7 +48,12 @@ public class DistributeFacebookQuoteOfTheDayPABImpl implements DistributeQuoteOf
         String text = formatPAB.formatQuoteOfTheDay(qotd);
         newNote.setText(text);
 
-        facebookClient.postStatus(newNote);
+        if (doDistribute) {
+            facebookClient.postStatus(newNote);
+        } else {
+            logger.info("not distributing {}", newNote);
+//            throw new RuntimeException("I shall fail you");
+        }
     }
     
 }

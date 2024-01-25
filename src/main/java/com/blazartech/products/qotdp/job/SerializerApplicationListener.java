@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 public class SerializerApplicationListener {
     
     @Autowired
-    private Jackson2ExecutionContextStringSerializer serializer;
+    private Jackson2ExecutionContextStringSerializer jacksonSerializer;
     
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -30,6 +30,6 @@ public class SerializerApplicationListener {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
         mapper.addMixIn(QuoteOfTheDay.class, Object.class);
-        serializer.setObjectMapper(mapper);
+        jacksonSerializer.setObjectMapper(mapper);
     }
 }
