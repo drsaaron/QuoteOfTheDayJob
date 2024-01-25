@@ -5,14 +5,12 @@
 package com.blazartech.products.qotdp.job.config;
 
 import com.blazartech.batch.IJobParametersBuilder;
-import com.blazartech.products.qotdp.job.SerializerApplicationListener;
 import java.util.Map;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersIncrementer;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.job.builder.FlowBuilder;
-import org.springframework.batch.core.job.builder.FlowBuilder.SplitBuilder;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.job.builder.SimpleJobBuilder;
 import org.springframework.batch.core.job.flow.Flow;
