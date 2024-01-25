@@ -7,7 +7,7 @@ package com.blazartech.products.qotdp.job.params;
 
 import com.blazartech.batch.IJobParametersBuilder;
 import com.blazartech.products.services.date.DateServices;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.Logger;
@@ -30,7 +30,7 @@ public class DailyQuoteOfTheDayDistributionJobParametersBuilder implements IJobP
     @Override
     public Map<String, Object> buildJobParameters(String[] arguments) {
         String runDateString = arguments[0];
-        Date runDate = dateServices.parseDate(runDateString);
+        LocalDate runDate = dateServices.parseLocalDate(runDateString);
         logger.info("runDate = " + dateServices.formatDate(runDate));
         
         Map<String, Object> parameters = new HashMap<>();
