@@ -5,12 +5,14 @@
 package com.blazartech.products.qotdp.job.config;
 
 import com.blazartech.batch.IJobParametersBuilder;
+import com.blazartech.products.qotdp.job.SerializerApplicationListener;
 import java.util.Map;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersIncrementer;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.job.builder.FlowBuilder;
+import org.springframework.batch.core.job.builder.FlowBuilder.SplitBuilder;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.job.builder.SimpleJobBuilder;
 import org.springframework.batch.core.job.flow.Flow;
@@ -153,8 +155,16 @@ public class BatchJobConfiguration {
                 .start(postQuoteOfTheDayTelegramStep())
                 .build();
         
-        jobBuilder.split(taskExecutor)
-                .add(mailFlow, facebookFlow, telegramFlow);
+        Flow distributeQuoteFlow = new FlowBuilder<Flow>("dailyQuoteOfTheDayDistributionJob_distributionSplit")
+                .split(taskExecutor)
+                .add(mailFlow, facebookFlow, telegramFlow)
+                .build();
+        
+        Step distributeQuoteStep = new StepBuilder("dailyQuoteOfTheDayDistributionJob_distributionSplit", jobRepository)
+                .flow(distributeQuoteFlow)
+                .build();
+        
+        jobBuilder.next(distributeQuoteStep);
                 
         return jobBuilder.build();
     }
