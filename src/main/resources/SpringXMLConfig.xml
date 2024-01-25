@@ -35,4 +35,14 @@
     
     <alias name="JobRepositoryDataSource" alias="dataSource" />
     
+    <bean id="conversionService"
+		class="org.springframework.context.support.ConversionServiceFactoryBean">
+	<property name="converters">
+		<set>
+			<bean class="com.blazartech.products.qotdp.job.config.LinkedMapToQuoteOfTheDayConverter"/>
+                        <bean class="com.blazartech.products.qotdp.job.config.StringToLocalDateConverter"/>
+		</set>
+	</property>
+</bean>
+    
 </beans>

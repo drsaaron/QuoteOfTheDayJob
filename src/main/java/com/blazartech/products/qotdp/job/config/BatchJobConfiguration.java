@@ -141,7 +141,6 @@ public class BatchJobConfiguration {
     @Bean
     public Job dailyQuoteOfTheDayDistributionJob() {
         SimpleJobBuilder jobBuilder = new JobBuilder(JOB_NAME, jobRepository)
-                .preventRestart()
                 .incrementer(jobParametersIncrementer)
                 .start(getQuoteOfTheDayStep());
                 
