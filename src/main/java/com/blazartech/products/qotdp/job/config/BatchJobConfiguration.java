@@ -56,25 +56,25 @@ public class BatchJobConfiguration {
                 .build();
     }
     
+    private Step buildTaskletStep(String name, Tasklet tasklet) {
+        return new StepBuilder(name, jobRepository)
+                .tasklet(tasklet, transactionManager)
+                .build();
+    }
+    
     @Bean
     public Step mailQuoteOfTheDayStep() {
-        return new StepBuilder("dailyQuoteOfTheDayDistributionJob_distributionSplit_mailStep", jobRepository)
-                .tasklet(mailQuoteOfTheDayTasklet, transactionManager)
-                .build();
+        return buildTaskletStep("dailyQuoteOfTheDayDistributionJob_distributionSplit_mailStep", mailQuoteOfTheDayTasklet);
     }
     
     @Bean
     public Step postQuoteOfTheDayFacebookStep() {
-        return new StepBuilder("dailyQuoteOfTheDayDistributionJob_distributionSplit_facebookStep", jobRepository)
-                .tasklet(postQuoteOfTheDayFacebookTasklet, transactionManager)
-                .build();
+        return buildTaskletStep("dailyQuoteOfTheDayDistributionJob_distributionSplit_facebookStep", postQuoteOfTheDayFacebookTasklet);
     }
     
     @Bean
     public Step postQuoteOfTheDayTelegramStep() {
-        return new StepBuilder("dailyQuoteOfTheDayDistributionJob_distributionSplit_telegramStep", jobRepository)
-                .tasklet(postQuoteOfTheDayTelegramTasklet, transactionManager)
-                .build();
+        return buildTaskletStep("dailyQuoteOfTheDayDistributionJob_distributionSplit_telegramStep", postQuoteOfTheDayTelegramTasklet);
     }
     
     @Autowired
@@ -136,21 +136,22 @@ public class BatchJobConfiguration {
     @Autowired
     private TaskExecutor taskExecutor;
     
+    private Flow buildFlow(String flowName, Step flowStep) {
+        Flow flow = new FlowBuilder<Flow>(flowName)
+                .start(flowStep)
+                .build();
+        return flow;
+    }
+    
     @Bean
     public Job dailyQuoteOfTheDayDistributionJob() {
         SimpleJobBuilder jobBuilder = new JobBuilder(JOB_NAME, jobRepository)
                 .incrementer(jobParametersIncrementer)
                 .start(getQuoteOfTheDayStep());
                 
-        Flow mailFlow = new FlowBuilder<Flow>("mailFlow")
-                .start(mailQuoteOfTheDayStep())
-                .build();
-        Flow facebookFlow = new FlowBuilder<Flow>("facebookFlow")
-                .start(postQuoteOfTheDayFacebookStep())
-                .build();
-        Flow telegramFlow = new FlowBuilder<Flow>("telegramFlow")
-                .start(postQuoteOfTheDayTelegramStep())
-                .build();
+        Flow mailFlow = buildFlow("mailFlow", mailQuoteOfTheDayStep());
+        Flow facebookFlow = buildFlow("facebookFlow", postQuoteOfTheDayFacebookStep());
+        Flow telegramFlow = buildFlow("telegramFlow", postQuoteOfTheDayTelegramStep());
         
         Flow distributeQuoteFlow = new FlowBuilder<Flow>("dailyQuoteOfTheDayDistributionJob_distributionSplit")
                 .split(taskExecutor)
