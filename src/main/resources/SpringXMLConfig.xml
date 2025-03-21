@@ -22,7 +22,7 @@
     <tx:annotation-driven transaction-manager="txManager" />
         
     <!-- batch configuration -->
-    <alias name="JobRepositoryTransactionManager" alias="transactionManager" />
+    <alias name="jobRepositoryTransactionManager" alias="transactionManager" />
     
     <!-- job manager -->
     <!-- <util:map id="batchJobMap" key-type="java.lang.String" value-type="org.springframework.batch.core.Job">
