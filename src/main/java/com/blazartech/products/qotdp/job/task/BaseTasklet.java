@@ -7,7 +7,6 @@ package com.blazartech.products.qotdp.job.task;
 
 import com.blazartech.products.qotdp.data.QuoteOfTheDay;
 import com.blazartech.products.qotdp.process.GetQuoteOfTheDayPAB;
-import com.blazartech.products.services.date.DateServices;
 import java.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,9 +24,6 @@ public abstract class BaseTasklet {
     @Autowired
     private GetQuoteOfTheDayPAB getQuoteOfTheDayPAB;
     
-    @Autowired
-    private DateServices dateServices;
-    
     @Value("#{jobParameters['runDate']}")
     private LocalDate runDate;
     
@@ -38,7 +34,7 @@ public abstract class BaseTasklet {
     public QuoteOfTheDay getQuoteOfTheDay() {
         logger.info("getting quote of the day for " + runDate);
         
-        return getGetQuoteOfTheDayPAB().getQuoteOfTheDay(dateServices.convertLocalDateToDate(runDate));
+        return getGetQuoteOfTheDayPAB().getQuoteOfTheDay(runDate);
     }
     
     public GetQuoteOfTheDayPAB getGetQuoteOfTheDayPAB() {
