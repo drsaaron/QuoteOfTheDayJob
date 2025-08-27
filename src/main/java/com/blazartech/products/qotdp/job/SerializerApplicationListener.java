@@ -26,7 +26,7 @@ public class SerializerApplicationListener {
     private static final Logger logger = LoggerFactory.getLogger(SerializerApplicationListener.class);
     
     @Autowired
-    private Jackson2ExecutionContextStringSerializer jacksonSerializer;
+    private Jackson2ExecutionContextStringSerializer batchDefaultSerializer;
     
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -36,6 +36,6 @@ public class SerializerApplicationListener {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
         mapper.addMixIn(QuoteOfTheDay.class, Object.class);
-        jacksonSerializer.setObjectMapper(mapper);
+        batchDefaultSerializer.setObjectMapper(mapper);
     }
 }

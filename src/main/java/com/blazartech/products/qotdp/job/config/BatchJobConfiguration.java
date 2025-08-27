@@ -6,18 +6,18 @@ package com.blazartech.products.qotdp.job.config;
 
 import com.blazartech.batch.IJobParametersBuilder;
 import java.util.Map;
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.JobParametersIncrementer;
-import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
+import org.springframework.batch.core.job.Job;
 import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.job.builder.SimpleJobBuilder;
 import org.springframework.batch.core.job.flow.Flow;
+import org.springframework.batch.core.job.parameters.JobParametersIncrementer;
 import org.springframework.batch.core.listener.ExecutionContextPromotionListener;
 import org.springframework.batch.core.repository.ExecutionContextSerializer;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.repository.dao.Jackson2ExecutionContextStringSerializer;
+import org.springframework.batch.core.step.Step;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ import org.springframework.transaction.PlatformTransactionManager;
  * @author scott
  */
 @Configuration
-@EnableBatchProcessing(executionContextSerializerRef = "jacksonSerializer")
+@EnableBatchProcessing
 public class BatchJobConfiguration {
     
     private static final String JOB_NAME = "dailyQuoteOfTheDayDistributionJob";
