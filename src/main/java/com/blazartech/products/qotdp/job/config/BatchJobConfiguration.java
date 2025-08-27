@@ -6,7 +6,6 @@ package com.blazartech.products.qotdp.job.config;
 
 import com.blazartech.batch.IJobParametersBuilder;
 import java.util.Map;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.job.Job;
 import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.builder.JobBuilder;
@@ -31,7 +30,6 @@ import org.springframework.transaction.PlatformTransactionManager;
  * @author scott
  */
 @Configuration
-@EnableBatchProcessing
 public class BatchJobConfiguration {
     
     private static final String JOB_NAME = "dailyQuoteOfTheDayDistributionJob";

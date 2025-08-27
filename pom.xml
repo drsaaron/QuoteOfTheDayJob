@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.blazartech</groupId>
     <artifactId>QuoteOfTheDayJob</artifactId>
-    <version>1.95-RELEASE</version>
+    <version>1.96-RELEASE</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,7 +24,7 @@
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>JobManager-mvn</artifactId>
-            <version>3.2-RELEASE</version>
+            <version>3.3-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.blazartech</groupId>
@@ -112,6 +112,7 @@
 	  <groupId>com.fasterxml.jackson.datatype</groupId>
 	  <artifactId>jackson-datatype-jsr310</artifactId>
 	</dependency>
+
 
     </dependencies>
 
