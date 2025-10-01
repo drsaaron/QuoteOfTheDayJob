@@ -16,6 +16,7 @@
     
     <!-- define the transaction manager.  The DAL implementations each define their own version of
     the data transaction manager so we merely need to note it.  Do we even need this? -->
+    <alias name="qotdTransactionManager" alias="txManager" />
     <tx:annotation-driven transaction-manager="txManager" />
         
     <!-- batch configuration -->
