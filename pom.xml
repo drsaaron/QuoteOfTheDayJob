@@ -24,7 +24,7 @@
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>JobManager-mvn</artifactId>
-            <version>3.6-RELEASE</version>
+            <version>3.7-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.blazartech</groupId>
