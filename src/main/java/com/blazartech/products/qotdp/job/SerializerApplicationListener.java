@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
  *
  * @author scott
  */
-@Component
+//@Component
 public class SerializerApplicationListener {
     
     private static final Logger logger = LoggerFactory.getLogger(SerializerApplicationListener.class);
