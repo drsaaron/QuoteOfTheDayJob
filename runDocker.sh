@@ -34,7 +34,8 @@ fi
 # run the job
 echo "running job"
 imageName=$(dockerImageName.sh)
-docker run --rm --user $(id -u):$(id -g) --network qotd -v ~/.blazartech:/home/$(whoami)/.blazartech $imageName 2>&1 | tee /tmp/qotd-$(date +%Y-%m-%d).log
+version=$(getPomAttribute.sh version | sed 's/-RELEASE//')
+docker run --rm --user $(id -u):$(id -g) --network qotd -v ~/.blazartech:/home/$(whoami)/.blazartech $imageName:$version 2>&1 | tee /tmp/qotd-$(date +%Y-%m-%d).log
 
 # done running
 running=0
