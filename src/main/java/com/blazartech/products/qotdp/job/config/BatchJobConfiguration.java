@@ -13,9 +13,7 @@ import org.springframework.batch.core.job.builder.SimpleJobBuilder;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.job.parameters.JobParametersIncrementer;
 import org.springframework.batch.core.listener.ExecutionContextPromotionListener;
-import org.springframework.batch.core.repository.ExecutionContextSerializer;
 import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.batch.core.repository.dao.Jackson2ExecutionContextStringSerializer;
 import org.springframework.batch.core.step.Step;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -95,11 +93,6 @@ public class BatchJobConfiguration {
     @Bean
     public Map<String, IJobParametersBuilder> batchJobParameterBuilderMap() {
         return Map.of(JOB_NAME, jobParameterBuilder);
-    }
-    
-    @Bean
-    public ExecutionContextSerializer jacksonSerializer() {
-        return new Jackson2ExecutionContextStringSerializer();
     }
     
     /*
