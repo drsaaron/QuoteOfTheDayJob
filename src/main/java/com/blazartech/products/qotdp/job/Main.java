@@ -5,11 +5,8 @@
  */
 package com.blazartech.products.qotdp.job;
 
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.batch.autoconfigure.BatchAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 
@@ -20,8 +17,6 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication
 @ImportResource("classpath:SpringXMLConfig.xml")
 @ComponentScan(basePackages = {"com.blazartech"})
-@EnableAutoConfiguration(exclude = BatchAutoConfiguration.class)
-@EnableBatchProcessing
 public class Main {
     
     public static void main(String... args) {

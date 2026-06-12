@@ -25,6 +25,7 @@ public class LinkedMapToQuoteOfTheDayConverter implements Converter<LinkedHashMa
         logger.info("converting {}", source);
         int number = (int) source.get("number");
         int quoteNumber = (int) source.get("quoteNumber");
+        @SuppressWarnings("unchecked")
         List<Integer> runDateElements = (List<Integer>) source.get("runDate");
         LocalDate runDate = LocalDate.now().withYear(runDateElements.get(0)).withMonth(runDateElements.get(1)).withDayOfMonth(runDateElements.get(2));
         
