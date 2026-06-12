@@ -16,4 +16,4 @@ ADD ./runJob.sh ./runJob.sh
 ADD ./tmp ./tmp
 
 # run the script
-CMD ./runJob.sh
+CMD [ "sh", "-c", "./runJob.sh" ]
