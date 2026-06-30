@@ -34,7 +34,7 @@ public class BatchJobConfiguration {
     
     @Autowired
     private Tasklet createQuoteOfTheDayTasklet;
-    
+   
     @Autowired
     private ExecutionContextPromotionListener quoteOfTheDayPromotionListener;
     
@@ -42,19 +42,19 @@ public class BatchJobConfiguration {
     private JobRepository jobRepository;
     
     @Autowired
-    private PlatformTransactionManager transactionManager;
+    private PlatformTransactionManager qotdTransactionManager;
     
     @Bean
     public Step getQuoteOfTheDayStep() {
         return new StepBuilder("dailyQuoteOfTheDayDistributionJob_getQuoteStep", jobRepository)
-                .tasklet(createQuoteOfTheDayTasklet, transactionManager)
+                .tasklet(createQuoteOfTheDayTasklet, qotdTransactionManager)
                 .listener(quoteOfTheDayPromotionListener)
                 .build();
     }
     
     private Step buildTaskletStep(String name, Tasklet tasklet) {
         return new StepBuilder(name, jobRepository)
-                .tasklet(tasklet, transactionManager)
+                .tasklet(tasklet, qotdTransactionManager)
                 .build();
     }
     

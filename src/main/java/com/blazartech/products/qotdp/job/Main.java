@@ -8,14 +8,12 @@ package com.blazartech.products.qotdp.job;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ImportResource;
 
 /**
  *
  * @author scott
  */
 @SpringBootApplication
-@ImportResource("classpath:SpringXMLConfig.xml")
 @ComponentScan(basePackages = {"com.blazartech"})
 public class Main {
     
