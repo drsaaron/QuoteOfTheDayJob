@@ -7,6 +7,7 @@ package com.blazartech.products.qotdp.job;
 
 import com.blazartech.batch.IJobManager;
 import com.blazartech.batch.IJobParametersBuilder;
+import com.blazartech.batch.JobInformation;
 import com.blazartech.batch.JobStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +36,8 @@ public class DistributeQuoteOfTheDayCommandLineRunner implements CommandLineRunn
     public void run(String... args) throws Exception {
         logger.info("starting job " + jobName);
         
-        JobStatus status = jobManager.runJob(jobName, args, parametersBuilder);
+        JobInformation info = jobManager.runJob(jobName, args, parametersBuilder);
+        JobStatus status = info.getStatus();
         
         if (status == JobStatus.Success) {
             logger.info("job completed successfully");
