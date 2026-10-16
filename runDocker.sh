@@ -1,6 +1,6 @@
 #! /bin/sh 
 
-export PATH=/bin:/usr/bin:/sbin:$HOME/shell:$PATH
+export PATH=$HOME/shell:/bin:/usr/bin:/sbin:$PATH
 cd $(dirname $0)
 
 running=1
