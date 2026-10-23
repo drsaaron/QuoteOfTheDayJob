@@ -1,6 +1,8 @@
 #! /bin/sh 
 
 export PATH=$HOME/shell:/bin:/usr/bin:/sbin:$PATH
+export PODMAN_USERNS=keep-id
+
 cd $(dirname $0)
 
 running=1
