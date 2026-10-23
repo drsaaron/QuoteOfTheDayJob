@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.blazartech</groupId>
     <artifactId>QuoteOfTheDayJob</artifactId>
-    <version>1.118-RELEASE</version>
+    <version>1.119-RELEASE</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -13,7 +13,7 @@
     <parent>  
         <groupId>com.blazartech</groupId>           
         <artifactId>blazarjavaparent</artifactId>           
-        <version>1.29-RELEASE</version>     
+        <version>1.30-RELEASE</version>     
     </parent> 
     
     <dependencies>
@@ -24,32 +24,32 @@
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>JobManager-mvn</artifactId>
-            <version>4.4-RELEASE</version>
+            <version>4.5-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>FacebookClient-mvn</artifactId>
-            <version>1.82-RELEASE</version>
+            <version>1.83-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>QuoteOfTheDay-process</artifactId>
-            <version>1.77-RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>com.blazartech</groupId>
-            <artifactId>QuoteOfTheDay-data-jpaImpl</artifactId>
-            <version>1.89-RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>com.blazartech</groupId>
-            <artifactId>QuoteOfTheDay-data</artifactId>
             <version>1.78-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.blazartech</groupId>
+            <artifactId>QuoteOfTheDay-data-jpaImpl</artifactId>
+            <version>1.90-RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.blazartech</groupId>
+            <artifactId>QuoteOfTheDay-data</artifactId>
+            <version>1.79-RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.blazartech</groupId>
             <artifactId>BlazarCryptoFile-mvn</artifactId>
-            <version>1.72-RELEASE</version>
+            <version>1.73-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.mysql</groupId>
@@ -62,12 +62,12 @@
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>BlazarMailer-springImpl</artifactId>
-            <version>1.68-RELEASE</version>
+            <version>1.69-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.blazartech</groupId>
             <artifactId>TelegramClient</artifactId>
-            <version>1.78-RELEASE</version>
+            <version>1.79-RELEASE</version>
         </dependency>
 
         <!-- unit testing -->
