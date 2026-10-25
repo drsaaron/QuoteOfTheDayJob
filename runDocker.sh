@@ -36,7 +36,7 @@ fi
 # run the job
 echo "running job"
 imageName=$(dockerImageName.sh)
-version=$(getPomAttribute.sh version | sed 's/-RELEASE//')
+version=$(dockerImageVersion.sh)
 docker run --rm --user $(id -u):$(id -g) --network qotd -v ~/.blazartech:/home/$(whoami)/.blazartech $imageName:$version 2>&1 | tee /tmp/qotd-$(date +%Y-%m-%d).log
 
 # done running
